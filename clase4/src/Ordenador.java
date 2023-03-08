@@ -1,5 +1,5 @@
 public class Ordenador {
-    int[] ordenar(int a, int b, int c, boolean asc){
+    public int[] ordenar(int a, int b, int c, boolean asc){
         int[] numerosOrdenados={a,b,c};
         for (int i=0; i<numerosOrdenados.length; i++){
             for (int j=i+1; j<numerosOrdenados.length; j++){
