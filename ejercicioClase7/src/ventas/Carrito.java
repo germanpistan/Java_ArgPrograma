@@ -1,5 +1,8 @@
 package ventas;
 
+import descuentos.DescuentoFijo;
+import descuentos.DescuentoPorcentaje;
+import descuentos.descuento;
 import empresa.Persona;
 import java.time.LocalDateTime;
 
@@ -12,10 +15,16 @@ public class Carrito {
 
     private LocalDateTime fechaCompra;
 
+    descuento descuento;
+
+
+
+
+
     public float precio(){
         float precioTotal=0;
         precioTotal= getItem1().precioTotal() + getItem2().precioTotal() + getItem3().precioTotal();
-        System.out.println("precio total carrito= "+precioTotal);
+        //System.out.println("precio total carrito= "+precioTotal);
         return precioTotal;
     }
 
@@ -57,5 +66,9 @@ public class Carrito {
 
     public void setFechaCompra(LocalDateTime fechaCompra) {
         this.fechaCompra = fechaCompra;
+    }
+
+    public void setDescuento(descuento descuento) {
+        this.descuento = descuento;
     }
 }

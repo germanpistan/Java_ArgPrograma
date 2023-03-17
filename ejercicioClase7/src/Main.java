@@ -1,3 +1,6 @@
+import descuentos.DescuentoFijo;
+import descuentos.DescuentoPorcentaje;
+import descuentos.descuento;
 import empresa.Persona;
 import empresa.Producto;
 import ventas.Carrito;
@@ -27,6 +30,9 @@ public class Main {
         persona.setFechaDeNacimiento(LocalDate.of(1980, 1, 15));
 
         Carrito carro=new Carrito();
+
+
+
         carro.setPersona(persona);
         carro.setFechaCompra(LocalDateTime.now());
         for (int i=1; i<lineas.length; i++){
@@ -56,6 +62,13 @@ public class Main {
                 }
             }
         }
-        System.out.println("Precio final del carrito= "+carro.precio());
+        //System.out.println("Precio final del carrito= "+carro.precio());
+
+        descuento descuento = new DescuentoFijo(50);
+        carro.setDescuento(descuento);
+        System.out.println("El precio total con el descuento fijo es de : " + carro.precio());
+        descuento descuentoPorcentaje = new DescuentoPorcentaje(0.15);
+        carro.setDescuento(descuento);
+        System.out.println("El precio total con el descuento porcentaje es de : " + carro.precio());
     }
 }
