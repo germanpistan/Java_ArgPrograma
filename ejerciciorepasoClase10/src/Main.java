@@ -90,7 +90,8 @@ public class Main {
             columna3 = "Desaprobada";
         }
 
-        //hacer archivo csv para devolver estos resultados
+        //hacer archivo csv para devolver estos resultados, y agregando con metodo write
+
 
 
 
