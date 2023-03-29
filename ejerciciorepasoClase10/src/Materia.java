@@ -18,6 +18,9 @@ public class Materia {
     }
 
     public List<Materia> getCorrelativas() {
+        if (correlativas == null) {    //aca digo que correlativas si es nula, se crea el objeto vacio
+            correlativas = new ArrayList<>();
+        }
         return correlativas;
     }
 
@@ -29,10 +32,13 @@ public class Materia {
         boolean b = true;   //planteo al reves, y que todos puedan cursar excepto el que tenga una mteria desaprobada
         List<Materia> correlativas = getCorrelativas();
         for (Materia m : correlativas){
+            if (alumno!=null){  //compruebo que al alumno no es nulo
             for (Materia aprobada : alumno.getMateriasAprobadas()){   //comparo la lista de aprobadas con la de materias
                 if (!m.equals(aprobada)){
                     b=false;  //si tengo una materia desaprobada, no puedo cursar
                 }
+            } } else {
+                b =false;
             }
         }
         return b;

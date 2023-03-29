@@ -36,6 +36,11 @@ public class Inscripcion {
     }
     public boolean aprobada (){
         boolean b = false;  //inicializo boleano falso
+        if (materia != null) {   //comprobamos que la materia existe
+            b = materia.puedeCursar(alumno);
+        } else {
+            return b;
+        }
         b = materia.puedeCursar(alumno);
 
         return b;

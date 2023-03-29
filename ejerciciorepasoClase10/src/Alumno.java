@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno {
@@ -26,6 +27,9 @@ public class Alumno {
     }
 
     public List<Materia> getMateriasAprobadas() {
+        if (materiasAprobadas == null) {  //hago que no sea null, lo inicializo vacio
+            materiasAprobadas = new ArrayList<>();
+        }
         return materiasAprobadas;
     }
 

@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -7,6 +8,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
     System.out.println("Ejemplo validador de Correlativas");
     Materia programacionI = new Materia ();
     programacionI.setNombre("Programacion I");
@@ -50,12 +52,15 @@ public class Main {
     alumnos.add(pedro);
 
     String ruta ="C:\\Users\\Carolina\\Desktop\\ARGENTINA PROGRAMA\\ejerciciorepasoClase10\\inscripciones.csv";
+    String ruta2 ="C:\\Users\\Carolina\\Desktop\\ARGENTINA PROGRAMA\\ejerciciorepasoClase10\\inscripcionesrevisadas.csv";
     List<String> lista = new ArrayList<>();
     try {
         lista = Files.readAllLines(Paths.get(ruta));
+
     } catch (IOException ex) {
             ex.printStackTrace();
     }
+    String textoSalida = "Alumno; Materia;Estado \n";
     for (int i = 1; i < lista.size(); i++) {
         String [] registroInscripcion = lista.get(i).split(";");   //creamos el array de registro y separamos la lista
         Inscripcion ins = new Inscripcion();  //creamos el objeto inscripcion
@@ -89,15 +94,51 @@ public class Main {
         } else {
             columna3 = "Desaprobada";
         }
+        textoSalida = textoSalida +     //rellenamos el texto nuevo con el for
+                registroInscripcion[0] + " " +
+                registroInscripcion[1] + " " +
+                columna3 + "\n";
+    }
+        try {
+            Files.write(Paths.get(ruta2), textoSalida.getBytes());   //escribe el archivo
 
-        //hacer archivo csv para devolver estos resultados, y agregando con metodo write
-
-
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
 
 
 
-    }
 }
+
+
+
+//hacer archivo csv para devolver estos resultados, y agregando con metodo write
+        /*
+        boolean[] aprobado = {true, false, true, true, false};
+
+        String csvFile = "alumnos.csv";
+        FileWriter writer = null;
+
+        try {
+            writer = new FileWriter(csvFile);
+            for (int j = 0; j < alumnos.size(); i++) {
+                writer.append((CharSequence) alumnos.get(j));
+                writer.append(",");
+                writer.append((CharSequence) materias.get(j));
+                writer.append(",");
+                writer.append(aprobado[j] ? "Aprobado" : "No Aprobado");
+                writer.append("\n");
+            }
+            System.out.println("El archivo CSV ha sido creado exitosamente.");
+        } catch (IOException e) {
+            System.out.println("Error al crear el archivo CSV: " + e.getMessage());
+        } finally {
+            try {
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Error al cerrar el archivo CSV: " + e.getMessage());
+            }*/
