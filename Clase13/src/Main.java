@@ -20,12 +20,15 @@ public class Main {
             /*ResultSet rs = st.executeQuery("select * from alumno where dni > 40000000 order by dni asc");  //hacer una consulta e imprimir datos en consola
             */
             ResultSet rs = st.executeQuery("select * from alumno where year (fechanacimiento) > 2000 order by dni asc");
-            while (rs.next()) {
+            /*while (rs.next()) {
 
                 System.out.println("Alumno " + rs.getInt(1) + " con DNI" + rs.getInt(5));
 
             }
-            con.close();
+            con.close();*/
+
+            st.executeUpdate("alter table alumno rename column nombre to nombres");
+
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
